@@ -1,0 +1,152 @@
+
+:root {
+  --primary: #00cec9;
+  --bg-dark: #1e1e1e;
+  --bg-light: #f2f2f2;
+  --text-dark: #ffffff;
+  --text-light: #1e1e1e;
+  --accent: #81ecec;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+  transition: background-color 0.5s, color 0.5s;
+}
+
+body.light {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+#theme-toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.logo {
+  font-size: 24px;
+  color: var(--accent);
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+body.light nav a {
+  color: var(--text-light);
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+.section {
+  display: none;
+  padding: 60px 40px;
+  animation: fadeIn 0.5s ease;
+  min-height: 100vh;
+}
+
+.section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.home .bio {
+  flex: 1;
+  min-width: 250px;
+}
+
+.home img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+}
+
+.project h3 {
+  color: var(--accent);
+}
+
+.contact-links a {
+  display: inline-block;
+  margin-right: 15px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+}
+
+input, textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+button[type="submit"] {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
