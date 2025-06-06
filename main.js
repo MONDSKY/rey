@@ -1,15 +1,21 @@
 function playVideo(device) {
+  // Hide the choice screen
   document.getElementById("choice-screen").style.display = "none";
-  document.getElementById("video-screen").style.display = "block";
 
-  const videoSource = document.getElementById("video-source");
-  videoSource.src = `rock.mp4`; // No folder, just file in root
+  // Show video screen
+  const videoScreen = document.getElementById("video-screen");
+  videoScreen.style.display = "block";
 
+  // Load and play video
   const video = document.getElementById("intro-video");
+  const source = document.getElementById("video-source");
+
+  source.src = "rock.mp4";
   video.load();
   video.play();
 
-  video.onended = () => {
-    window.location.href = `${deskstop.html`;
+  // When video ends, redirect to corresponding version
+  video.onended = function () {
+    window.location.href = device === "mobile" ? "mobile.html" : "desktop.html";
   };
 }
