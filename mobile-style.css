@@ -5,6 +5,8 @@
   --text-dark: #ffffff;
   --text-light: #121212;
   --accent: #74b9ff;
+  --glow-dark: #0ff;
+  --glow-light: #f39c12;
 }
 
 body {
@@ -68,51 +70,93 @@ nav button {
 .section {
   display: none;
   padding: 20px;
-  animation: fadeIn 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .section.active {
   display: block;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  text-align: center;
-}
-
-.home img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 3px solid var(--primary);
-  object-fit: cover;
-}
-
-.home h1 {
+/* Glow for dark mode */
+.glow {
   font-size: 28px;
-  margin-bottom: 10px;
+  color: white;
+  font-weight: bold;
+  text-shadow:
+    0 0 5px #ffffff,
+    0 0 10px var(--accent),
+    0 0 20px var(--primary),
+    0 0 30px var(--glow-dark);
+  animation: glowAnimDark 2s ease-in-out infinite alternate;
 }
 
-.home p {
+/* Glow for light mode */
+body.light .glow {
+  text-shadow:
+    0 0 5px #fff2dc,
+    0 0 10px var(--glow-light),
+    0 0 20px var(--glow-light),
+    0 0 30px var(--glow-light);
+  animation: glowAnimLight 2s ease-in-out infinite alternate;
+}
+
+/* Glow animation dark mode */
+@keyframes glowAnimDark {
+  from {
+    text-shadow:
+      0 0 5px #ffffff,
+      0 0 10px var(--primary),
+      0 0 15px var(--glow-dark);
+  }
+  to {
+    text-shadow:
+      0 0 10px #ffffff,
+      0 0 20px var(--accent),
+      0 0 30px var(--glow-dark);
+  }
+}
+
+/* Glow animation light mode */
+@keyframes glowAnimLight {
+  from {
+    text-shadow:
+      0 0 5px #fff2dc,
+      0 0 10px var(--glow-light),
+      0 0 15px var(--glow-light);
+  }
+  to {
+    text-shadow:
+      0 0 10px #fff2dc,
+      0 0 20px var(--glow-light),
+      0 0 30px var(--glow-light);
+  }
+}
+
+/* Text styling over video */
+.home p,
+.project p,
+form p,
+.contact p {
   font-size: 16px;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: white;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+  display: inline-block;
 }
 
 .project h3 {
   color: var(--accent);
   margin: 10px 0 5px;
-}
-
-.project p {
-  font-size: 15px;
-  margin-bottom: 15px;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 a {
@@ -121,6 +165,7 @@ a {
   color: var(--accent);
   text-decoration: none;
   font-weight: bold;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
 form {
@@ -145,35 +190,4 @@ button[type="submit"] {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-}
-/* Glowing text animation */
-.glow {
-  color: white;
-  text-shadow:
-    0 0 5px #ffffff,
-    0 0 10px #ffffff,
-    0 0 20px #ffffff,
-    0 0 40px #0ff,
-    0 0 80px #0ff,
-    0 0 90px #0ff,
-    0 0 100px #0ff,
-    0 0 150px #0ff;
-  animation: glowAnim 2s ease-in-out infinite alternate;
-}
-
-@keyframes glowAnim {
-  from {
-    text-shadow:
-      0 0 5px #ffffff,
-      0 0 10px #ffffff,
-      0 0 15px #0ff,
-      0 0 20px #0ff;
-  }
-  to {
-    text-shadow:
-      0 0 10px #ffffff,
-      0 0 20px #ffffff,
-      0 0 30px #0ff,
-      0 0 40px #0ff;
-  }
 }
