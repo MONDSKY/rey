@@ -16,6 +16,6 @@ function playVideo(device) {
 
   // When video ends, redirect to corresponding version
   video.onended = function () {
-    window.location.href = device === "mobile" ? "mobile.html" : "desktop.html";
+    window.location.href = device === "mobile" ? "mobile.html" : "deskstop.html";
   };
 }
