@@ -84,58 +84,28 @@ nav button {
   transform: translateY(0);
 }
 
-/* Glow for dark mode */
+/* Simplified Glow for dark mode */
 .glow {
   font-size: 28px;
   color: white;
   font-weight: bold;
-  text-shadow:
-    0 0 5px #ffffff,
-    0 0 10px var(--accent),
-    0 0 20px var(--primary),
-    0 0 30px var(--glow-dark);
-  animation: glowAnimDark 2s ease-in-out infinite alternate;
+  text-shadow: 0 0 8px var(--primary);
+  animation: simpleGlow 3s ease-in-out infinite alternate;
 }
 
-/* Glow for light mode */
+/* Simplified Glow for light mode */
 body.light .glow {
-  text-shadow:
-    0 0 5px #fff2dc,
-    0 0 10px var(--glow-light),
-    0 0 20px var(--glow-light),
-    0 0 30px var(--glow-light);
-  animation: glowAnimLight 2s ease-in-out infinite alternate;
+  text-shadow: 0 0 8px var(--glow-light);
+  animation: simpleGlow 3s ease-in-out infinite alternate;
 }
 
-/* Glow animation dark mode */
-@keyframes glowAnimDark {
+/* Simple glow pulse animation */
+@keyframes simpleGlow {
   from {
-    text-shadow:
-      0 0 5px #ffffff,
-      0 0 10px var(--primary),
-      0 0 15px var(--glow-dark);
+    text-shadow: 0 0 4px var(--primary);
   }
   to {
-    text-shadow:
-      0 0 10px #ffffff,
-      0 0 20px var(--accent),
-      0 0 30px var(--glow-dark);
-  }
-}
-
-/* Glow animation light mode */
-@keyframes glowAnimLight {
-  from {
-    text-shadow:
-      0 0 5px #fff2dc,
-      0 0 10px var(--glow-light),
-      0 0 15px var(--glow-light);
-  }
-  to {
-    text-shadow:
-      0 0 10px #fff2dc,
-      0 0 20px var(--glow-light),
-      0 0 30px var(--glow-light);
+    text-shadow: 0 0 12px var(--primary);
   }
 }
 
@@ -191,6 +161,7 @@ button[type="submit"] {
   font-size: 16px;
   cursor: pointer;
 }
+
 .section {
   opacity: 0;
   transform: translateY(20px);
